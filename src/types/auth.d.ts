@@ -18,3 +18,9 @@ export interface DecodedToken {
   sub: string;        // 유저 ID
   exp: number;        // 만료 시간
 }
+
+export interface User {
+  id: number;
+  email: string;
+  is_active: boolean;
+}

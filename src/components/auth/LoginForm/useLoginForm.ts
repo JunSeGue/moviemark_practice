@@ -1,4 +1,8 @@
+"use client";
+
 import { useState, useCallback, ChangeEvent, FormEvent } from "react";
+
+import { useRouter } from "next/navigation";
 
 import { useAuth } from "@/hooks/useAuth";
 import { useToastMessageContext } from "@/providers/ToastMessageProvider";
@@ -21,6 +25,7 @@ export const useLoginForm = ({ onSuccess, onError }: UseLoginFormProps) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { showToastMessage } = useToastMessageContext();
 	const { login } = useAuth();
+	const router = useRouter();
 
 	const validateForm = useCallback(() => {
 		const newErrors: FormErrors = {};
@@ -55,6 +60,7 @@ export const useLoginForm = ({ onSuccess, onError }: UseLoginFormProps) => {
 			await login({ email, password });
 			showToastMessage({ type: "success", message: "로그인 성공!" });
 			onSuccess?.();
+			router.push("/movies");
 		} catch (error) {
 			const errorMessage = error instanceof Error ? error.message : "로그인 실패";
 			showToastMessage({ type: "error", message: errorMessage });

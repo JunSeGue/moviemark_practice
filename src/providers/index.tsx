@@ -3,7 +3,7 @@
 import { QueryProvider } from "./QueryProvider";
 import { RecoilProvider } from "./RecoilProvider";
 import { SidebarProvider } from "./SidebarProvider";
-import { ThemeProvider } from "./ThemeProvider.";
+import { ThemeProvider } from "./ThemeProvider";
 import { ToastMessageProvider } from "./ToastMessageProvider";
 
 /**

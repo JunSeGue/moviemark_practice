@@ -4,6 +4,7 @@ import { login as loginApi } from "@/api/auth";
 import { authState } from "@/store/auth";
 import type { AuthCredentials, DecodedToken } from "@/types/auth";
 import { decodeJwt } from "@/utils/decodeJwt";
+import { removeAuthTokens } from "@/utils/token";
 
 export const useAuth = () => {
 	const setAuthState = useSetRecoilState(authState);
@@ -19,6 +20,7 @@ export const useAuth = () => {
 
 	const logout = () => {
 		setAuthState({ user: null });
+		removeAuthTokens();
 	};
 
 	return { login, logout };
